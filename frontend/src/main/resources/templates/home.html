@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Serenity Spa</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<nav>
+    <a href="/">Inicio</a>
+    <a href="/services">Servicios</a>
+    <a href="/book" th:if="${loggedIn}">Reservar</a>
+    <a href="/my-appointments" th:if="${loggedIn}">Mis reservas</a>
+    <a href="/admin/services" th:if="${role == 'ADMIN'}">Admin</a>
+    <a href="/login" th:if="${!loggedIn}">Login</a>
+    <a href="/register" th:if="${!loggedIn}">Registro</a>
+    <a href="/logout" th:if="${loggedIn}">Salir</a>
+</nav>
+<main>
+    <h1>Serenity Spa</h1>
+    <p>Experiencia premium de bienestar y relajacion.</p>
+    <section class="grid">
+        <article class="card" th:each="service : ${services}">
+            <h3 th:text="${service.name}"></h3>
+            <p th:text="${service.description}"></p>
+            <p><strong th:text="${'$' + service.price}"></strong> · <span th:text="${service.durationMinutes + ' min'}"></span></p>
+        </article>
+    </section>
+</main>
+</body>
+</html>

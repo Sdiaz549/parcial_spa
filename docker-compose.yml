@@ -100,15 +100,14 @@ services:
   frontend:
     build:
       context: ./frontend
-      args:
-        VITE_AUTH_API_URL: http://localhost:8080
-        VITE_SPA_API_URL: http://localhost:8080
     container_name: serenity-frontend
+    environment:
+      PORT: 3000
+      API_GATEWAY_URL: http://api-gateway:8080
     ports:
-      - "3000:80"
+      - "3000:3000"
     depends_on:
-      - auth-service
-      - spa-service
+      - api-gateway
     networks:
       - serenity-network
 

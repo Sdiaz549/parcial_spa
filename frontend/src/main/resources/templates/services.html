@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Servicios</title><link rel="stylesheet" th:href="@{/styles.css}"></head>
+<body>
+<nav><a href="/">Inicio</a><a href="/book">Reservar</a><a href="/my-appointments">Mis reservas</a><a href="/logout">Salir</a></nav>
+<main>
+    <h1>Servicios</h1>
+    <section class="grid">
+        <article class="card" th:each="service : ${services}">
+            <h3 th:text="${service.name}"></h3>
+            <p th:text="${service.description}"></p>
+            <p th:text="${'$' + service.price + ' · ' + service.durationMinutes + ' min'}"></p>
+        </article>
+    </section>
+</main>
+</body>
+</html>

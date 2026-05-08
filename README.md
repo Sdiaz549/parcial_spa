@@ -9,7 +9,7 @@ serenity-spa/
 ├── auth-service/      # Spring Boot 3 + PostgreSQL + JWT
 ├── spa-service/       # Spring Boot 3 + MySQL + JWT
 ├── api-gateway/       # Spring Cloud Gateway
-├── frontend/          # React + Vite
+├── frontend/          # Spring Boot MVC + Thymeleaf
 ├── docker-compose.yml
 ├── README.md
 ├── DEPLOY_FREE.md
@@ -22,7 +22,7 @@ serenity-spa/
 - Spring Security, BCrypt, JWT
 - PostgreSQL para autenticacion
 - MySQL para servicios y reservas
-- React, Vite, React Router, Lucide Icons
+- Spring Boot MVC, Thymeleaf
 - Docker y Docker Compose
 - Render Free para backends
 - Vercel o Netlify Free para frontend
@@ -80,12 +80,12 @@ mvn clean package
 mvn spring-boot:run
 ```
 
-Frontend:
+Frontend (Spring Boot):
 
 ```bash
 cd frontend
-npm install
-npm run dev
+mvn clean package
+mvn spring-boot:run
 ```
 
 ## Variables de entorno
@@ -117,8 +117,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 Frontend:
 
 ```env
-VITE_AUTH_API_URL=http://localhost:8080
-VITE_SPA_API_URL=http://localhost:8080
+API_GATEWAY_URL=http://localhost:8080
 ```
 
 ## Endpoints

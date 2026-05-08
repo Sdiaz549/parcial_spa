@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin Reservas</title><link rel="stylesheet" th:href="@{/styles.css}"></head>
+<body>
+<nav><a href="/">Inicio</a><a href="/admin/services">Admin Servicios</a><a href="/logout">Salir</a></nav>
+<main>
+    <h1>Gestion de reservas</h1>
+    <table>
+        <thead><tr><th>Cliente</th><th>Servicio</th><th>Fecha</th><th>Hora</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="a : ${appointments}">
+            <td th:text="${a.userEmail}"></td>
+            <td th:text="${a.serviceName}"></td>
+            <td th:text="${a.appointmentDate}"></td>
+            <td th:text="${a.appointmentTime}"></td>
+            <td th:text="${a.status}"></td>
+            <td>
+                <form th:action="@{'/admin/appointments/status/' + ${a.id}}" method="post">
+                    <select name="status">
+                        <option value="PENDING">PENDING</option>
+                        <option value="CONFIRMED">CONFIRMED</option>
+                        <option value="CANCELLED">CANCELLED</option>
+                    </select>
+                    <button type="submit">Actualizar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

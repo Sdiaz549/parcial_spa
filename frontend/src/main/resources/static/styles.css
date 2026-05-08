@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3eddf;
+  color: #1e2b24;
+}
+
+nav {
+  display: flex;
+  gap: 14px;
+  padding: 14px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #d4d9d1;
+}
+
+nav a {
+  color: #2f4f3d;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+main {
+  padding: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #d4d9d1;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.form-wrap {
+  max-width: 460px;
+  margin: 28px auto;
+  background: #fff;
+  padding: 18px;
+  border: 1px solid #d4d9d1;
+  border-radius: 8px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+input, select, button {
+  min-height: 38px;
+  border-radius: 6px;
+  border: 1px solid #c9cfc7;
+  padding: 0 10px;
+}
+
+button {
+  border: 0;
+  background: #435d4c;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th, td {
+  border: 1px solid #d4d9d1;
+  padding: 8px;
+  text-align: left;
+}
+
+.error {
+  color: #b84a4a;
+  font-weight: 700;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}

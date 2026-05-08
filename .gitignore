@@ -11,19 +11,12 @@ target/
 *.jar
 *.war
 *.ear
-
-# Node
 node_modules/
 dist/
-.vite/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Environment
 .env
 .env.*
-!.env.example
 
 # Docker and logs
 *.log

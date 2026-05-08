@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Reservar</title><link rel="stylesheet" th:href="@{/styles.css}"></head>
+<body>
+<nav><a href="/">Inicio</a><a href="/my-appointments">Mis reservas</a><a href="/logout">Salir</a></nav>
+<main class="form-wrap">
+    <h1>Reservar cita</h1>
+    <form method="post" action="/book">
+        <label>Servicio
+            <select name="serviceId" required>
+                <option th:each="service : ${services}" th:value="${service.id}" th:text="${service.name}"></option>
+            </select>
+        </label>
+        <label>Fecha <input type="date" name="appointmentDate" required></label>
+        <label>Hora <input type="time" name="appointmentTime" required></label>
+        <button type="submit">Guardar reserva</button>
+    </form>
+</main>
+</body>
+</html>

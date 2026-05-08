@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mis reservas</title><link rel="stylesheet" th:href="@{/styles.css}"></head>
+<body>
+<nav><a href="/">Inicio</a><a href="/book">Reservar</a><a href="/logout">Salir</a></nav>
+<main>
+    <h1>Mis reservas</h1>
+    <table>
+        <thead><tr><th>Servicio</th><th>Fecha</th><th>Hora</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="a : ${appointments}">
+            <td th:text="${a.serviceName}"></td>
+            <td th:text="${a.appointmentDate}"></td>
+            <td th:text="${a.appointmentTime}"></td>
+            <td th:text="${a.status}"></td>
+            <td>
+                <form th:action="@{'/appointments/delete/' + ${a.id}}" method="post">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

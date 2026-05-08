@@ -11,7 +11,6 @@ Referencias oficiales utiles:
 - Railway MySQL: https://docs.railway.com/guides/mysql
 - Railway planes: https://docs.railway.com/reference/pricing/plans
 - Clever Cloud MySQL: https://www.clever.cloud/developers/doc/addons/mysql/
-- Vercel Vite: https://vercel.com/docs/frameworks/vite
 - Vercel variables: https://vercel.com/docs/environment-variables
 
 ## 1. Subir a GitHub
@@ -140,44 +139,34 @@ curl https://tu-spa-service.onrender.com/actuator/health
 curl https://tu-spa-service.onrender.com/services
 ```
 
-## 6. Desplegar frontend en Vercel
+## 6. Desplegar frontend Spring Boot en Render
 
-1. Entrar a Vercel.
-2. Importar el repositorio de GitHub.
+1. Crear otro `New > Web Service` en Render.
+2. Conectar el repositorio de GitHub.
 3. Configurar:
-   - Framework Preset: Vite
+   - Language: Docker
    - Root Directory: `frontend`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
+   - Dockerfile Path: `Dockerfile`
+   - Instance Type: Free
 4. Variables de entorno:
 
 ```env
-VITE_AUTH_API_URL=https://tu-auth-service.onrender.com
-VITE_SPA_API_URL=https://tu-spa-service.onrender.com
+PORT=10000
+API_GATEWAY_URL=https://tu-api-gateway.onrender.com
 ```
 
-5. Deploy.
-6. Copiar la URL final, por ejemplo:
+5. Deploy y copiar la URL final, por ejemplo:
 
 ```text
-https://serenity-spa.vercel.app
+https://serenity-spa-frontend.onrender.com
 ```
 
-7. Volver a Render y actualizar `CORS_ALLOWED_ORIGINS` en ambos servicios agregando la URL exacta de Vercel.
-8. Redeploy de ambos servicios backend.
+6. Volver a Render y actualizar `CORS_ALLOWED_ORIGINS` en `auth-service`, `spa-service` y `api-gateway` agregando la URL exacta del frontend.
+7. Redeploy de servicios backend.
 
-## 7. Alternativa frontend en Netlify
+## 7. Alternativa frontend temporal
 
-1. Importar repositorio.
-2. Base directory: `frontend`.
-3. Build command: `npm run build`.
-4. Publish directory: `frontend/dist`.
-5. Variables:
-
-```env
-VITE_AUTH_API_URL=https://tu-auth-service.onrender.com
-VITE_SPA_API_URL=https://tu-spa-service.onrender.com
-```
+Puedes publicar temporalmente el frontend con Dev Tunnels sobre el puerto 3000.
 
 ## 8. Probar URLs publicas
 
@@ -197,7 +186,7 @@ curl https://tu-spa-service.onrender.com/services
 
 Frontend:
 
-1. Abrir `https://tu-frontend.vercel.app`.
+1. Abrir `https://tu-frontend.onrender.com` o la URL del tunnel.
 2. Login con `user@spa.com / user123`.
 3. Crear una reserva.
 4. Login con `admin@spa.com / admin123`.
